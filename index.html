@@ -11,13 +11,36 @@
             box-sizing: border-box;
         }
 
+        /* Background styling */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: ('assets/images/background.png'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* This creates the parallax effect */
+            opacity: 0.15; /* Adjust this value to make background more/less visible */
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             padding: 2rem;
             max-width: 1400px;
             margin: 0 auto;
-            background-color: #ffffff;
+            position: relative; /* This ensures content stays above background */
+            min-height: 100vh;
+        }
+
+        .content-wrapper {
+            background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+            backdrop-filter: blur(5px); /* Adds subtle blur to the background */
+            padding: 2rem;
+            border-radius: 10px;
         }
 
         .header {
@@ -40,12 +63,14 @@
         .project-card {
             display: flex;
             flex-direction: column;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.95);
             transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .project-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .project-image {
@@ -55,7 +80,8 @@
         }
 
         .project-info {
-            padding: 0.5rem 0;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .project-title {
@@ -86,6 +112,15 @@
             text-decoration: underline;
         }
 
+        /* Alternative parallax effect using transform3d for better performance */
+        @media (min-width: 768px) {
+            .background-container {
+                transform: translate3d(0, 0, 0);
+                backface-visibility: hidden;
+                perspective: 1000px;
+            }
+        }
+
         /* Responsive adjustments */
         @media (max-width: 1200px) {
             .grid-container {
@@ -101,14 +136,24 @@
             body {
                 padding: 1rem;
             }
+            
+            /* Disable parallax on mobile for better performance */
+            .background-container {
+                background-attachment: scroll;
+            }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <img src="assets/images/Echolab-logo.png" alt="Echolab Logo" class="logo">
-    </header>
+    <!-- Background container -->
+    <div class="background-container"></div>
 
+    <!-- Content wrapper -->
+    <div class="content-wrapper">
+        <header class="header">
+            <img src="assets/images/Echolab-logo.png" alt="Echolab Logo" class="logo">
+        </header>
+        
     <div class="grid-container">
         <!-- Project 1 -->
         <div class="project-card">
