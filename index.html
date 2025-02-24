@@ -5,19 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echolab Projects</title>
     <style>
+        @font-face {
+            font-family: 'Neo Sans Cyrillic';
+            src: url('assets/fonts/NeoSansCyrillic-Bold.woff2') format('woff2'),
+                 url('assets/fonts/NeoSansCyrillic-Bold.woff') format('woff');
+            font-weight: bold;
+            font-style: normal;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('assets/images/background.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.3;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Neo Sans Cyrillic', 'Arial', sans-serif;
             line-height: 1.6;
             padding: 2rem;
             max-width: 1400px;
             margin: 0 auto;
-            background-color: #ffffff;
+            position: relative;
+            min-height: 100vh;
+            color: white;
         }
 
         .header {
@@ -40,7 +64,6 @@
         .project-card {
             display: flex;
             flex-direction: column;
-            background: #fff;
             transition: transform 0.3s ease;
         }
 
@@ -52,6 +75,7 @@
             width: 100%;
             object-fit: contain;
             margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .project-info {
@@ -61,12 +85,13 @@
         .project-title {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
-            color: #333;
+            color: white;
+            font-weight: bold;
         }
 
         .project-date {
             font-size: 0.9rem;
-            color: #666;
+            color: rgba(255, 255, 255, 0.8);
             margin-bottom: 0.5rem;
         }
 
@@ -77,16 +102,25 @@
         .project-links a {
             display: inline-block;
             margin-right: 1rem;
-            color: #0066cc;
+            color: #94c5ff;
             text-decoration: none;
             font-size: 0.9rem;
+            font-weight: bold;
         }
 
         .project-links a:hover {
+            color: white;
             text-decoration: underline;
         }
 
-        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .background-container {
+                transform: translate3d(0, 0, 0);
+                backface-visibility: hidden;
+                perspective: 1000px;
+            }
+        }
+
         @media (max-width: 1200px) {
             .grid-container {
                 grid-template-columns: repeat(2, 1fr);
@@ -101,10 +135,16 @@
             body {
                 padding: 1rem;
             }
+            
+            .background-container {
+                background-attachment: scroll;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="background-container"></div>
+
     <header class="header">
         <img src="assets/images/Echolab-logo.png" alt="Echolab Logo" class="logo">
     </header>
