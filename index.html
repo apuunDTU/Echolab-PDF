@@ -5,14 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echolab Projects</title>
     <style>
-        @font-face {
-            font-family: 'Neo Sans Cyrillic';
-            src: url('assets/fonts/NeoSansCyrillic-Bold.woff2') format('woff2'),
-                 url('assets/fonts/NeoSansCyrillic-Bold.woff') format('woff');
-            font-weight: bold;
-            font-style: normal;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -25,7 +17,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.32);
+            background-color: rgba(0, 0, 0, 0.4);
             z-index: -1;
         }
 
@@ -40,7 +32,6 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            opacity: 1;
         }
 
         body {
@@ -66,15 +57,17 @@
 
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 3rem;
             margin-bottom: 3rem;
+            align-items: start; /* This ensures items start at the top */
         }
 
         .project-card {
             display: flex;
             flex-direction: column;
             transition: transform 0.3s ease;
+            height: fit-content; /* Allow natural height */
         }
 
         .project-card:hover {
@@ -83,35 +76,39 @@
 
         .project-image {
             width: 100%;
+            height: auto; /* Allow natural height */
             object-fit: contain;
             margin-bottom: 1rem;
-            background: rgba(255, 255, 255, 0.1);
+            display: block; /* Remove any extra space */
         }
 
         .project-info {
             padding: 0.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         .project-title {
             font-size: 1.2rem;
-            margin-bottom: 0.5rem;
             color: white;
             font-weight: bold;
+            line-height: 1.3;
         }
 
         .project-date {
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 0.5rem;
         }
 
         .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
             margin-top: 0.5rem;
         }
 
         .project-links a {
-            display: inline-block;
-            margin-right: 1rem;
             color: #EE656D;
             text-decoration: none;
             font-size: 0.9rem;
@@ -121,14 +118,6 @@
         .project-links a:hover {
             color: white;
             text-decoration: underline;
-        }
-
-        @media (min-width: 768px) {
-            .background-container {
-                transform: translate3d(0, 0, 0);
-                backface-visibility: hidden;
-                perspective: 1000px;
-            }
         }
 
         @media (max-width: 1200px) {
