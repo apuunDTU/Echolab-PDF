@@ -11,28 +11,13 @@
             box-sizing: border-box;
         }
 
-        .background-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background-image: url('assets/images/background.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            opacity: 0.3;
-        }
-
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             padding: 2rem;
             max-width: 1400px;
             margin: 0 auto;
-            position: relative;
-            min-height: 100vh;
+            background-color: #ffffff;
         }
 
         .header {
@@ -55,6 +40,7 @@
         .project-card {
             display: flex;
             flex-direction: column;
+            background: #fff;
             transition: transform 0.3s ease;
         }
 
@@ -66,7 +52,6 @@
             width: 100%;
             object-fit: contain;
             margin-bottom: 1rem;
-            background: rgba(255, 255, 255, 0.1);
         }
 
         .project-info {
@@ -76,13 +61,12 @@
         .project-title {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
-            color: #000;
-            font-weight: 600;
+            color: #333;
         }
 
         .project-date {
             font-size: 0.9rem;
-            color: #333;
+            color: #666;
             margin-bottom: 0.5rem;
         }
 
@@ -96,21 +80,13 @@
             color: #0066cc;
             text-decoration: none;
             font-size: 0.9rem;
-            font-weight: 500;
         }
 
         .project-links a:hover {
             text-decoration: underline;
         }
 
-        @media (min-width: 768px) {
-            .background-container {
-                transform: translate3d(0, 0, 0);
-                backface-visibility: hidden;
-                perspective: 1000px;
-            }
-        }
-
+        /* Responsive adjustments */
         @media (max-width: 1200px) {
             .grid-container {
                 grid-template-columns: repeat(2, 1fr);
@@ -125,21 +101,16 @@
             body {
                 padding: 1rem;
             }
-            
-            .background-container {
-                background-attachment: scroll;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="background-container"></div>
-
     <header class="header">
         <img src="assets/images/Echolab-logo.png" alt="Echolab Logo" class="logo">
     </header>
-        
+
     <div class="grid-container">
+
         <!-- Project 1 -->
         <div class="project-card">
             <img src="assets/images/achiving-the-web.png" alt="Project 1" class="project-image">
