@@ -11,7 +11,6 @@
             box-sizing: border-box;
         }
 
-        /* Background styling */
         .background-container {
             position: fixed;
             top: 0;
@@ -19,11 +18,11 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background-image: url('assets/images/background.png'); /* Replace with your image path */
+            background-image: url('assets/images/background.png');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* This creates the parallax effect */
-            opacity: 0.15; /* Adjust this value to make background more/less visible */
+            background-attachment: fixed;
+            opacity: 0.3;
         }
 
         body {
@@ -32,15 +31,8 @@
             padding: 2rem;
             max-width: 1400px;
             margin: 0 auto;
-            position: relative; /* This ensures content stays above background */
+            position: relative;
             min-height: 100vh;
-        }
-
-        .content-wrapper {
-            background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
-            backdrop-filter: blur(5px); /* Adds subtle blur to the background */
-            padding: 2rem;
-            border-radius: 10px;
         }
 
         .header {
@@ -63,36 +55,34 @@
         .project-card {
             display: flex;
             flex-direction: column;
-            background: rgba(255, 255, 255, 0.95);
             transition: transform 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .project-image {
             width: 100%;
             object-fit: contain;
             margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .project-info {
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.9);
+            padding: 0.5rem 0;
         }
 
         .project-title {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
-            color: #333;
+            color: #000;
+            font-weight: 600;
         }
 
         .project-date {
             font-size: 0.9rem;
-            color: #666;
+            color: #333;
             margin-bottom: 0.5rem;
         }
 
@@ -106,13 +96,13 @@
             color: #0066cc;
             text-decoration: none;
             font-size: 0.9rem;
+            font-weight: 500;
         }
 
         .project-links a:hover {
             text-decoration: underline;
         }
 
-        /* Alternative parallax effect using transform3d for better performance */
         @media (min-width: 768px) {
             .background-container {
                 transform: translate3d(0, 0, 0);
@@ -121,7 +111,6 @@
             }
         }
 
-        /* Responsive adjustments */
         @media (max-width: 1200px) {
             .grid-container {
                 grid-template-columns: repeat(2, 1fr);
@@ -137,7 +126,6 @@
                 padding: 1rem;
             }
             
-            /* Disable parallax on mobile for better performance */
             .background-container {
                 background-attachment: scroll;
             }
@@ -145,14 +133,11 @@
     </style>
 </head>
 <body>
-    <!-- Background container -->
     <div class="background-container"></div>
 
-    <!-- Content wrapper -->
-    <div class="content-wrapper">
-        <header class="header">
-            <img src="assets/images/Echolab-logo.png" alt="Echolab Logo" class="logo">
-        </header>
+    <header class="header">
+        <img src="assets/images/Echolab-logo.png" alt="Echolab Logo" class="logo">
+    </header>
         
     <div class="grid-container">
         <!-- Project 1 -->
