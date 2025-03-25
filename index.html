@@ -44,11 +44,28 @@
         .header {
             text-align: left;
             margin-bottom: 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .logo {
             max-width: 300px;
             margin-bottom: 1rem;
             display: block;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: #030F4F;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #E83F48;
         }
         .grid-container {
             display: grid;
@@ -62,6 +79,7 @@
             flex-direction: column;
             transition: transform 0.3s ease;
             height: fit-content; /* Allow natural height */
+            position: relative;
         }
         .project-card:hover {
             transform: translateY(-5px);
@@ -79,6 +97,14 @@
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+        }
+        
+        .project-date {
+            font-size: 0.9rem;
+            color: #030F4F;
+            opacity: 0.8;
+            font-style: italic;
+            margin-bottom: 0.3rem;
         }
         .project-title {
             font-size: 1.2rem;
@@ -151,6 +177,35 @@
             text-decoration: none;
         }
         
+        /* Project and Workshop Tags */
+        .project-tag {
+            display: inline-block;
+            background-color: #E83F48;
+            color: white;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 3px;
+            margin-bottom: 0.5rem;
+            width: auto;
+            max-width: 100px;
+            text-align: center;
+        }
+        
+        .workshop-tag {
+            display: inline-block;
+            background-color: #1a2161;
+            color: white;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 3px;
+            margin-bottom: 0.5rem;
+            width: auto;
+            max-width: 110px;
+            text-align: center;
+        }
+        
         @media (max-width: 1200px) {
             .grid-container {
                 grid-template-columns: repeat(2, 1fr);
@@ -162,6 +217,15 @@
             }
             body {
                 padding: 1rem;
+            }
+            
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
             }
             
             .background-container {
@@ -179,16 +243,20 @@
     <div class="overlay"></div>
     <header class="header">
         <img src="assets/images/logo3.png" alt="Echolab Logo" class="logo">
+        <div class="nav-links">
+            <a href="https://www.linkedin.com/company/echodtu/" target="_blank">LINKEDIN</a>
+        </div>
     </header>
 
     <div class="grid-container">
 
-                        <!-- Project 7 -->
+        <!-- Project 7 -->
         <div class="project-card">
             <img src="assets/images/echolab-Vestager.jpg" alt="Project 7" class="project-image">
             <div class="project-info">
+                <div class="project-tag">PROJECT</div>
+                <div class="project-date">April 2025</div>
                 <h2 class="project-title">Margrethe Vestager visits ECHOlab as the new chair of DTU – Technical University of Denmark</h2>
-                <div class="project-date">(2025)</div>
                 <div class="project-links">
                     <a href="https://www.linkedin.com/feed/update/urn:li:activity:7302701711389814785/?actorCompanyId=105685967">LinkedIn</a>
                 </div>
@@ -196,28 +264,28 @@
         </div>
 
         
-                <!-- Project 6 -->
+        <!-- Project 6 -->
         <div class="project-card">
             <img src="assets/images/ballerup.jpg" alt="Project 6" class="project-image">
             <div class="project-info">
+                <div class="project-tag">PROJECT</div>
+                <div class="project-date">March 2025</div>
                 <h2 class="project-title">Exhibiting Grounding AI at Ballerup Library</h2>
-                <div class="project-date">(2025)</div>
                 <div class="project-links">
                     <a href="https://bsky.app/profile/echodtu.bsky.social/post/3lge3cuza322q">BlueSky</a>
                 </div>
             </div>
         </div>
 
-         <!-- Project 5 -->
+        <!-- Project 5 -->
         <div class="project-card">
             <img src="assets/images/EXAMPLE UB APP.jpg" alt="Project 5" class="project-image">
             <div class="project-info">
+                <div class="project-tag">PROJECT</div>
+                <div class="project-date">February 2025</div>
                 <h2 class="project-title">Urban Belonging Photo App: Web Accessibility Assessment</h2>
-                <div class="project-date">(2025)</div>
                 <div class="project-links">
                     <a href="https://urbanbelonging.app/v2/dashboard/datascape/a049ab49-6f90-4a12-9185-b68734b4b66e?lat=55.68395804431637&lng=12.552752776835405&z=10.80505287668918&f=eJytT00LgjAA%2FS%2FvvEOnIm%2BjlhUzY84KImTllJGoTO0i%2FvcmRARBpy7v8D55PVYbLplI4siBL8J4n0TMD9hOwuvxUEWn4Z0vBKZhpboWOoXX2k4PBNvJvObTZfPbSJxmjSpvTgYPjxgdhxcVVKnJjLbvRKaKZuyWKs%2FvM0r%2F3k1Q1dqqtrIuEgq4rYhRsVgnkp0%2BPwPfn4cnPB9khQ%3D%3D&p=11dec602-3089-4234-a680-58285ad79628">Urban Belonging Project</a>
-                <div class="project-links">
-                    </div>
                     <a href="https://github.com/ECHOlab-DTU/UB-App-Accessibility-Development">GitHub</a>
                 </div>
             </div>
@@ -227,8 +295,9 @@
         <div class="project-card">
             <img src="assets/images/achiving-the-web2.png" alt="Project 4" class="project-image">
             <div class="project-info">
+                <div class="workshop-tag">WORKSHOP</div>
+                <div class="project-date">January 2025</div>
                 <h2 class="project-title">Archiving the Web: Methods and Applications</h2>
-                <div class="project-date">(2025)</div>
                 <div class="project-links">
                     <a href="https://www.linkedin.com/feed/update/urn:li:activity:7289986373875298306/?actorCompanyId=105685967">LinkedIn</a>
                 </div>
@@ -239,8 +308,9 @@
         <div class="project-card">
             <img src="assets/images/etno-image-1.png" alt="Project 3" class="project-image">
             <div class="project-info">
+                <div class="workshop-tag">WORKSHOP</div>
+                <div class="project-date">December 2024</div>
                 <h2 class="project-title">Experimenting with large ethnographic data workshop</h2>
-                <div class="project-date">(2024)</div>
                 <div class="project-links">
                     <a href="https://github.com/ECHOlab-DTU/Experimenting-with-large-ethnographic-data-workshop">GitHub</a>
                     <a href="https://www.linkedin.com/feed/update/urn:li:activity:7269288295212220417/?actorCompanyId=105685967">LinkedIn</a>
@@ -252,20 +322,22 @@
         <div class="project-card">
             <img src="assets/images/grounding-AI3.png" alt="Project 2" class="project-image">
             <div class="project-info">
+                <div class="project-tag">PROJECT</div>
+                <div class="project-date">August 2024</div>
                 <h2 class="project-title">Grounding AI - AI Atlas of AI</h2>
-                <div class="project-date">(2024)</div>
                 <div class="project-links">
                     <a href="https://grounding-ai.github.io/">Website</a>
                 </div>
             </div>
         </div>
 
-                <!-- Project 1 -->
+        <!-- Project 1 -->
         <div class="project-card">
             <img src="assets/images/Folkemødet-bots.jpg" alt="Project 1" class="project-image">
             <div class="project-info">
+                <div class="project-tag">PROJECT</div>
+                <div class="project-date">June 2024</div>
                 <h2 class="project-title">Folkemødet: AI as citizens?</h2>
-                <div class="project-date">(2024)</div>
                 <div class="project-links">
                     <a href="https://drive.google.com/file/d/1xU-ahJLjZIio_U41VbmBfYXMFpzjgNZb/view">Video</a>
                     <a href="https://www.linkedin.com/feed/update/urn:li:activity:7212078703290269698/">LinkedIn</a>
@@ -311,4 +383,3 @@
     </script>
 </body>
 </html>
-
