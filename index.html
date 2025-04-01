@@ -322,7 +322,7 @@
 
    <!-- Project 5 -->
 <div class="project-card">
-<iframe src="assets/images/Urban_Belonging_App_Workshop.pdf#zoom=FitH" style="border: none; width: 100%; height: 600px;"></iframe>
+<iframe src="assets/images/Urban_Belonging_App_Workshop.pdf#zoom=FitH" style="border: none; width: 100%; height: 600px; margin: 0; padding: 0;"></iframe>
     <div class="project-info">
         <div class="project-date">November 2024</div>
         <h2 class="project-title">Web Accessibility Assessment Workshop - Urban Belonging Photo App</h2>
@@ -430,6 +430,19 @@
             if (event.target === modal) {
                 modal.style.display = "none";
             }
+        }
+
+        // Event modal functions
+        function openEventModal(imageSrc) {
+            const eventModal = document.getElementById('eventModal');
+            const eventImage = document.getElementById('eventImage');
+            eventImage.src = imageSrc;
+            eventModal.classList.add('active');
+        }
+
+        function closeEventModal() {
+            const eventModal = document.getElementById('eventModal');
+            eventModal.classList.remove('active');
         }
     </script>
 </body>
