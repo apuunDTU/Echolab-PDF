@@ -366,12 +366,10 @@
 
    <!-- Project 5 -->
 <div class="project-card">
-    <a href="assets/images/Urban_Belonging_App_Workshop.pdf" target="_blank">
-        <img src="assets/images/EXAMPLE UB APP-3.jpg" alt="Project 5" class="project-image">
-    </a>
+    <img src="assets/images/EXAMPLE UB APP-3.jpg" alt="Project 5" class="project-image">
     <div class="project-info">
         <div class="project-date">November 2024</div>
-        <h2 class="project-title">Web Accessibility Assessment Workshop - Urban Belonging Photo App</h2>
+        <h2 class="project-title" onclick="openPDFModal('assets/images/Urban_Belonging_App_Workshop.pdf')" style="cursor: pointer;">Web Accessibility Assessment Workshop - Urban Belonging Photo App</h2>
         <div class="project-links">
             <a href="https://github.com/ECHOlab-DTU/UB-App-Accessibility-Development">GitHub</a>
             <a href="https://urbanbelonging.com">Urban Belonging Project</a>
@@ -381,12 +379,10 @@
                 
         <!-- Project 4 -->
         <div class="project-card">
-            <a href="assets/images/Urban_Belonging_App_Workshop.pdf" target="_blank">
-                <img src="assets/images/Archiving the web.jpg" alt="Project 4" class="project-image">
-            </a>
+            <img src="assets/images/Archiving the web.jpg" alt="Project 4" class="project-image">
             <div class="project-info">
                 <div class="project-date">January 2025</div>
-                <h2 class="project-title">Archiving the Web: Methods and Applications</h2>
+                <h2 class="project-title" onclick="openPDFModal('assets/images/Urban_Belonging_App_Workshop.pdf')" style="cursor: pointer;">Archiving the Web: Methods and Applications</h2>
                 <div class="project-links">
                     <a href="https://www.linkedin.com/feed/update/urn:li:activity:7289986373875298306/?actorCompanyId=105685967">LinkedIn</a>
                 </div>
@@ -451,10 +447,18 @@
         <img class="modal-content" id="expandedImg">
     </div>
 
+    <!-- PDF Modal -->
+    <div id="pdfModal" class="modal">
+        <span class="close" onclick="closePDFModal()">&times;</span>
+        <iframe id="pdfFrame"></iframe>
+    </div>
+
     <script>
-        // Get the modal
+        // Get the modals
         const imageModal = document.getElementById("imageModal");
+        const pdfModal = document.getElementById("pdfModal");
         const modalImg = document.getElementById("expandedImg");
+        const pdfFrame = document.getElementById("pdfFrame");
         
         // Get all images with class project-image
         const images = document.getElementsByClassName("project-image");
@@ -467,15 +471,24 @@
             }
         }
         
-        // Close the modal when clicking on the × button
-        document.querySelector('.close').onclick = function() {
-            imageModal.style.display = "none";
-        }
+        // Close the modals when clicking on the × button
+        document.querySelectorAll('.close').forEach(closeBtn => {
+            closeBtn.onclick = function() {
+                if (this.closest('#pdfModal')) {
+                    closePDFModal();
+                } else {
+                    imageModal.style.display = "none";
+                }
+            }
+        });
         
-        // Close the modal when clicking outside
+        // Close the modals when clicking outside
         window.onclick = function(event) {
             if (event.target === imageModal) {
                 imageModal.style.display = "none";
+            }
+            if (event.target === pdfModal) {
+                closePDFModal();
             }
         }
 
@@ -490,6 +503,17 @@
         function closeEventModal() {
             const eventModal = document.getElementById('eventModal');
             eventModal.classList.remove('active');
+        }
+
+        // PDF Modal functions
+        function openPDFModal(pdfUrl) {
+            pdfModal.style.display = "block";
+            pdfFrame.src = pdfUrl;
+        }
+
+        function closePDFModal() {
+            pdfModal.style.display = "none";
+            pdfFrame.src = "";
         }
     </script>
 </body>
