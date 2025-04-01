@@ -286,6 +286,18 @@
                 max-width: 95%;
             }
         }
+        /* Add PDF viewer styles */
+        #pdf-container {
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            background: white;
+        }
+        #pdf-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -322,7 +334,11 @@
 
    <!-- Project 5 -->
 <div class="project-card">
-<embed src="assets/images/Urban_Belonging_App_Workshop.pdf#zoom=FitH" type="application/pdf" style="width: 100%; height: 600px; border: none; margin: 0; padding: 0;">
+    <div id="pdf-container">
+        <a href="assets/images/Urban_Belonging_App_Workshop.pdf" target="_blank" style="display: block; width: 100%; height: 600px; background: white; text-align: center; line-height: 600px; text-decoration: none; color: #030F4F;">
+            View PDF Document
+        </a>
+    </div>
     <div class="project-info">
         <div class="project-date">November 2024</div>
         <h2 class="project-title">Web Accessibility Assessment Workshop - Urban Belonging Photo App</h2>
