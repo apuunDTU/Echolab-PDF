@@ -334,11 +334,7 @@
 
    <!-- Project 5 -->
 <div class="project-card">
-    <div id="pdf-container">
-        <a href="assets/images/Urban_Belonging_App_Workshop.pdf" target="_blank" style="display: block; width: 100%; height: 600px; background: white; text-align: center; line-height: 600px; text-decoration: none; color: #030F4F;">
-            View PDF Document
-        </a>
-    </div>
+    <img src="assets/images/EXAMPLE UB APP-3.jpg" alt="PDF Preview" class="project-image" onclick="openPDFModal('assets/images/Urban_Belonging_App_Workshop.pdf')">
     <div class="project-info">
         <div class="project-date">November 2024</div>
         <h2 class="project-title">Web Accessibility Assessment Workshop - Urban Belonging Photo App</h2>
@@ -351,7 +347,7 @@
                 
         <!-- Project 4 -->
         <div class="project-card">
-            <img src="assets/images/Archiving the web.jpg" alt="Project 4" class="project-image">
+            <img src="assets/images/Archiving the web.jpg" alt="Project 4" class="project-image" onclick="openPDFModal('assets/images/Archiving the web.pdf')">
             <div class="project-info">
                 <div class="project-date">January 2025</div>
                 <h2 class="project-title">Archiving the Web: Methods and Applications</h2>
@@ -413,10 +409,10 @@
         </div>
     </div>
 
-    <!-- Modal for image zoom -->
-    <div id="imageModal" class="modal">
+    <!-- PDF Modal -->
+    <div id="pdfModal" class="modal">
         <span class="close">&times;</span>
-        <img class="modal-content" id="expandedImg">
+        <iframe id="pdfFrame" style="width: 100%; height: 90vh; border: none;"></iframe>
     </div>
 
     <script>
@@ -459,6 +455,30 @@
         function closeEventModal() {
             const eventModal = document.getElementById('eventModal');
             eventModal.classList.remove('active');
+        }
+
+        // Get the PDF modal
+        const pdfModal = document.getElementById("pdfModal");
+        const pdfFrame = document.getElementById("pdfFrame");
+        
+        // Function to open PDF modal
+        function openPDFModal(pdfUrl) {
+            pdfModal.style.display = "block";
+            pdfFrame.src = pdfUrl;
+        }
+        
+        // Close the PDF modal when clicking on the × button
+        document.querySelectorAll('.close').forEach(closeBtn => {
+            closeBtn.onclick = function() {
+                pdfModal.style.display = "none";
+            }
+        });
+        
+        // Close the PDF modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target === pdfModal) {
+                pdfModal.style.display = "none";
+            }
         }
     </script>
 </body>
