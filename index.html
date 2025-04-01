@@ -441,50 +441,26 @@
         </div>
     </div>
 
-    <!-- Image Modal -->
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="expandedImg">
-    </div>
-
     <!-- PDF Modal -->
-    <div id="pdfModal" class="modal">
+    <div id="pdfModal">
         <span class="close" onclick="closePDF()">&times;</span>
         <iframe id="pdfFrame"></iframe>
     </div>
 
     <script>
-        // Get the modals
-        const imageModal = document.getElementById("imageModal");
+        // Get the modal
         const pdfModal = document.getElementById("pdfModal");
-        const modalImg = document.getElementById("expandedImg");
         const pdfFrame = document.getElementById("pdfFrame");
         
-        // Handle browser back button
-        window.addEventListener('popstate', function(event) {
+        // Close the modal when clicking on the × button
+        document.querySelector('.close').onclick = function() {
             closePDF();
-        });
+        }
         
-        // Close the modals when clicking on the × button
-        document.querySelectorAll('.close').forEach(closeBtn => {
-            closeBtn.onclick = function() {
-                if (this.closest('#pdfModal')) {
-                    closePDF();
-                    history.back();
-                } else {
-                    imageModal.style.display = "none";
-                }
-            }
-        });
-        
-        // Close the modals when clicking outside
+        // Close the modal when clicking outside
         window.onclick = function(event) {
-            if (event.target === imageModal) {
-                imageModal.style.display = "none";
-            }
             if (event.target === pdfModal) {
                 closePDF();
-                history.back();
             }
         }
 
@@ -505,8 +481,6 @@
         function openPDF(pdfUrl) {
             pdfModal.style.display = "block";
             pdfFrame.src = pdfUrl;
-            // Add a new history entry
-            history.pushState({ modal: 'pdf' }, '', '#pdf');
         }
 
         function closePDF() {
