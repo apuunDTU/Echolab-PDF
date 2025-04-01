@@ -411,8 +411,8 @@
 
     <!-- PDF Modal -->
     <div id="pdfModal" class="modal">
-        <span class="close">&times;</span>
-        <iframe id="pdfFrame" style="width: 100%; height: 90vh; border: none;"></iframe>
+        <span class="close" onclick="closePDFModal()">&times;</span>
+        <iframe id="pdfFrame" style="width: 100%; height: 90vh; border: none; background: black;"></iframe>
     </div>
 
     <script>
@@ -475,6 +475,11 @@
         function openPDFModal(pdfUrl) {
             pdfModal.style.display = "block";
             pdfFrame.src = pdfUrl;
+        }
+
+        // Function to close PDF modal
+        function closePDFModal() {
+            pdfModal.style.display = "none";
         }
     </script>
 </body>
