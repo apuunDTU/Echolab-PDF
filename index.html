@@ -366,7 +366,7 @@
 
    <!-- Project 5 -->
 <div class="project-card">
-    <img src="assets/images/EXAMPLE UB APP-3.jpg"  alt="Project 5" class="project-image" onclick="openPDFModal('assets/images/Urban_Belonging_App_Workshop.pdf')">
+    <img src="assets/images/EXAMPLE UB APP-3.jpg"  alt="Project 5" class="project-image">
     <div class="project-info">
         <div class="project-date">November 2024</div>
         <h2 class="project-title">Web Accessibility Assessment Workshop - Urban Belonging Photo App</h2>
@@ -379,7 +379,7 @@
                 
         <!-- Project 4 -->
         <div class="project-card">
-            <img src="assets/images/Archiving the web.jpg" alt="Project 4" class="project-image" onclick="openPDFModal('assets/images/Urban_Belonging_App_Workshop.pdf')">
+            <img src="assets/images/Archiving the web.jpg" alt="Project 4" class="project-image">
             <div class="project-info">
                 <div class="project-date">January 2025</div>
                 <h2 class="project-title">Archiving the Web: Methods and Applications</h2>
@@ -441,55 +441,37 @@
         </div>
     </div>
 
-    <!-- PDF Modal -->
-    <div id="pdfModal" class="modal">
-        <span class="close" onclick="closePDFModal()">&times;</span>
-        <iframe id="pdfFrame"></iframe>
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="expandedImg">
     </div>
 
     <script>
-        // Get the modals
+        // Get the modal
         const imageModal = document.getElementById("imageModal");
-        const pdfModal = document.getElementById("pdfModal");
         const modalImg = document.getElementById("expandedImg");
-        const pdfFrame = document.getElementById("pdfFrame");
         
         // Get all images with class project-image
         const images = document.getElementsByClassName("project-image");
         
         // Add click event to all project images
         for (let i = 0; i < images.length; i++) {
-            images[i].onclick = function(event) {
-                // Check if the image has a PDF URL in its onclick attribute
-                const pdfUrl = this.getAttribute('onclick').match(/'([^']+)'/)[1];
-                if (pdfUrl) {
-                    event.preventDefault();
-                    openPDFModal(pdfUrl);
-                } else {
-                    imageModal.style.display = "block";
-                    modalImg.src = this.src;
-                }
+            images[i].onclick = function() {
+                imageModal.style.display = "block";
+                modalImg.src = this.src;
             }
         }
         
-        // Close the modals when clicking on the × button
-        document.querySelectorAll('.close').forEach(closeBtn => {
-            closeBtn.onclick = function() {
-                if (this.closest('#pdfModal')) {
-                    closePDFModal();
-                } else {
-                    imageModal.style.display = "none";
-                }
-            }
-        });
+        // Close the modal when clicking on the × button
+        document.querySelector('.close').onclick = function() {
+            imageModal.style.display = "none";
+        }
         
-        // Close the modals when clicking outside
+        // Close the modal when clicking outside
         window.onclick = function(event) {
             if (event.target === imageModal) {
                 imageModal.style.display = "none";
-            }
-            if (event.target === pdfModal) {
-                closePDFModal();
             }
         }
 
@@ -504,18 +486,6 @@
         function closeEventModal() {
             const eventModal = document.getElementById('eventModal');
             eventModal.classList.remove('active');
-        }
-        
-        // Function to open PDF modal
-        function openPDFModal(pdfUrl) {
-            pdfModal.style.display = "block";
-            pdfFrame.src = pdfUrl;
-        }
-
-        // Function to close PDF modal
-        function closePDFModal() {
-            pdfModal.style.display = "none";
-            pdfFrame.src = "";
         }
     </script>
 </body>
